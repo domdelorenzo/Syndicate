@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+# auth import
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('syndicate.urls'))
+    path('', include('syndicate.urls')),
+    # path('', include('accounts.urls')),
+    # url(r'^login/$', auth_views.login, name='login'),
+    # url(r'^logout/$', auth_views.logout, name='logout'),
+    # url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
+    # url(r'^admin/', admin.site.urls),
 ]

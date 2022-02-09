@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import User, Folder, Subscription
+from .models import Folder, Subscription
+from accounts.models import CustomUser as User
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
   subscriptions = serializers.HyperlinkedRelatedField(
@@ -57,25 +58,7 @@ class SubscriptionSerializer(serializers.HyperlinkedModelSerializer):
     queryset=Folder.objects.all(),
     source='folder'
   )
-  # user = serializers.HyperlinkedRelatedField(
-  #   view_name='user_detail',
-  #   read_only=True
-  # )
 
-  # user_id = serializers.PrimaryKeyRelatedField(
-  #   queryset=User.objects.all(),
-  #   source='user'
-  # )
-
-  # folder = serializers.HyperlinkedRelatedField(
-  #   view_name='folder_detail',
-  #   read_only=True
-  # )
-
-  # folder_id = serializers.PrimaryKeyRelatedField(
-  #   queryset=Folder.objects.all(),
-  #   read_only=True
-  # )
 
   class Meta:
     model = Subscription
