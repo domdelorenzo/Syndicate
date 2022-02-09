@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .serializers import UserSerializer, FolderSerializer, SubscriptionSerializer
-from .models import User, Folder, Subscription
+from .models import Folder, Subscription
 from rest_framework import generics,status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -12,6 +12,7 @@ from django.contrib.auth import logout as log_out
 from urllib.parse import urlencode
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from accounts.models import CustomUser as User
 
 import json
 
@@ -33,7 +34,6 @@ def dashboard(request):
         'name': user.first_name,
         'picture': auth0user.extra_data['picture'],
         # 'email': auth0user.extra_data['email']
-        # 'email': auth0user.extra_data=("email", None)
     }
 
     return render(request, 'dashboard.html', {
