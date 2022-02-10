@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import {read} from 'feed-reader'
+import {read} from 'feed-reader'
 import Parser from 'rss-parser'
 
 export default function ReadingPane(props) {
@@ -65,7 +65,8 @@ export default function ReadingPane(props) {
       {articles.map((article)=>(
           <div className='article' key={article.id}>
             <h3>{article.title}</h3>
-            {article.contentSnippet}
+            {/* <span>{article['content:encoded']}</span> */}
+            <div dangerouslySetInnerHTML={{__html: `${article['content:encoded']}`}} ></div>
             <h6>{article.pubDate}</h6>
           </div>
         ))}
