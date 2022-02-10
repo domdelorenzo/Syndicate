@@ -1,6 +1,8 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import FeedList from '../components/FeedList';
+import ReadingPane from '../components/ReadingPane';
+
 export default function Home(props) {
   return (
     <div>
@@ -11,6 +13,9 @@ export default function Home(props) {
         </div>
         <div className="feedlist">
           <FeedList />
+        </div>
+        <div className="readingPane">
+          <ReadingPane />
         </div>
       </div>
     </div>
