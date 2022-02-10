@@ -5,9 +5,9 @@ from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
     #auth0 urls
-    path('', views.index),
-    path('dashboard', views.dashboard),
-    path('logout', views.logout),
+    # path('', views.index),
+    # path('dashboard', views.dashboard),
+    # path('logout', views.logout),
     path("", include("django.contrib.auth.urls")),
     path("", include("social_django.urls")),
     # REST urls

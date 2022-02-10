@@ -1,7 +1,8 @@
 import React from 'react';
-import axios from 'axios'
+import FolderList from './FolderList';
+
 
 export default function Sidebar(props) {
 
-  return <div> Sidebar</div>;
+  return <div> Sidebar <FolderList/></div>;
 }

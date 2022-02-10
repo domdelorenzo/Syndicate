@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Folder, Subscription
-from accounts.models import CustomUser as User
+from .models import Folder, Subscription, User
+# from accounts.models import CustomUser as User
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
   subscriptions = serializers.HyperlinkedRelatedField(
