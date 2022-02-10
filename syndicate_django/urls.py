@@ -23,11 +23,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
     path('', include('syndicate.urls')),
-    re_path('.*', TemplateView.as_view(template_name='index.html'))
-    # path('', include('accounts.urls')),
-    # url(r'^login/$', auth_views.login, name='login'),
-    # url(r'^logout/$', auth_views.logout, name='logout'),
-    # url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
-    # url(r'^admin/', admin.site.urls),
+    
 ]

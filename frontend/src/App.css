@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  height: 90vmin;
+}
+
+.sidebar {
+  background-color:rgb(3, 110, 30);
+  width: 25%;
+  height: 100%;
+}
