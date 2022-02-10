@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios'
-import { BASE_URL } from '../globals';
+import { GetAllFolders } from '../Services/endpoints';
 
 export default function FolderList(props) {
 
   const getFolders = async () => {
-    const response = await axios.get(`${BASE_URL}/folders`);
+    const response = await GetAllFolders();
     console.log(response);
     
     return;
   }
+  getFolders()
   return <div> Folder List </div>;
 }
