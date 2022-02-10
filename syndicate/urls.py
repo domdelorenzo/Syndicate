@@ -8,8 +8,8 @@ urlpatterns = [
     # path('', views.index),
     # path('dashboard', views.dashboard),
     # path('logout', views.logout),
-    path("", include("django.contrib.auth.urls")),
-    path("", include("social_django.urls")),
+    # path("", include("django.contrib.auth.urls")),
+    # path("", include("social_django.urls")),
     # REST urls
     path('users', views.UserList.as_view(), name='user_list'),
     path('user/<int:pk>', views.UserDetail.as_view(), name='user_detail'),

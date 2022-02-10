@@ -29,8 +29,8 @@ class User(models.Model):
 class Folder(models.Model):
   folder_name = models.CharField(max_length=100)
   user = models.ForeignKey(
-    settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='folders')
-
+    User, on_delete=models.CASCADE, related_name='folders')
+    # settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='folders')
   def __str__(self):
       return self.folder_name
 
@@ -39,7 +39,8 @@ class Subscription(models.Model):
   url = models.CharField(max_length=200)
   favorite = models.BooleanField()
   user = models.ForeignKey(
-    settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='subscriptions')
+    User, on_delete=models.CASCADE, related_name='subscriptions')
+    # settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='subscriptions')
   folder = models.ForeignKey(
     Folder, on_delete=models.SET_NULL, blank=True, null=True, related_name='subscriptions'
   )
