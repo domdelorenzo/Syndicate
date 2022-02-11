@@ -1,0 +1,36 @@
+{
+  "name": "syndicate",
+  "version": "1.0.0",
+  "description": "A web-based RSS aggregator and reader.  ## Maintainer - Dominick DeLorenzo [LinkedIn](https://www.linkedin.com/in/dominick-delorenzo-breed) | [Twitter](https://twitter.com/bad_mr_wolf) | [Github](https://github.com/domdelorenzo)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domdelorenzo/Syndicate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domdelorenzo/Syndicate/issues"
+  },
+  "homepage": "https://github.com/domdelorenzo/Syndicate#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3",
+    "sequelize": "^6.16.1",
+    "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "faker": "^6.6.6",
+    "nodemon": "^2.0.15"
+  }
+}
