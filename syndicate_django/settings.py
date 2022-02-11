@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'syndicate',
     'accounts',
-    'social_django',
+    # 'social_django',
     'rest_framework',
     'corsheaders'
 ]
@@ -55,15 +55,35 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+# CORS_ALLOW_CREDENTIALS = True
+# ALLOWED_HOSTS = ['*']
+# CORS_EXPOSE_HEADERS = (
+#     'Access-Control-Allow-Origin: *',
+# )
+# CORS_ALLOWED_ORIGINS= [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000"
+# ]
+
+# CORS_ALLOW_HEADERS = (
+#     'xsrfheadername',
+#     'xsrfcookiename',
+#     'content-type',
+#     'XSRF-TOKEN',
+# )
+
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = False
 
 ROOT_URLCONF = 'syndicate_django.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['frontend/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,9 +91,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -132,40 +151,58 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# make React build accessible to Django
+# STATIC_ROOT ='.static'
+# STATICFILES_DIRS = [
+    # 'frontend/build/'
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Auth0 settings
-AUTH_USER_MODEL = 'accounts.CustomUser'
-LOGIN_URL = '/login/auth0'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+
+# # Auth0 settings
+# AUTH_USER_MODEL = 'accounts.CustomUser'
+# LOGIN_URL = '/login/auth0'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 
-SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
-SOCIAL_AUTH_AUTH0_KEY = os.getenv('AUTH0_CLIENT_ID')
-SOCIAL_AUTH_AUTH0_SECRET = os.getenv('AUTH0_CLIENT_SECRET')
-SOCIAL_AUTH_AUTH0_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
+# SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+# SOCIAL_AUTH_AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+# SOCIAL_AUTH_AUTH0_KEY = os.getenv('AUTH0_CLIENT_ID')
+# SOCIAL_AUTH_AUTH0_SECRET = os.getenv('AUTH0_CLIENT_SECRET')
+# SOCIAL_AUTH_AUTH0_SCOPE = [
+#     'openid',
+#     'profile',
+#     'email'
+# ]
 
-AUTHENTICATION_BACKENDS = {
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.auth0.Auth0OAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-    # 'auth0login.auth0backend.Auth0',
-    'accounts.auth0backend.Auth0',
-}
+# AUTHENTICATION_BACKENDS = {
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     'social_core.backends.facebook.FacebookOAuth2',
+#     'social_core.backends.auth0.Auth0OAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+#     # 'auth0login.auth0backend.Auth0',
+#     'accounts.auth0backend.Auth0',
+# }
 
 # social-auth login urls
 # LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout'
 # LOGIN_REDIRECT_URL = 'home'
+
+# Make CSRF accessible to Axios
+# CSRF_COOKIE_NAME = "XSRF-TOKEN"
+
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = False
+CSRF_TRUSTED_ORIGINS= [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+
+
