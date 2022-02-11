@@ -1,6 +1,6 @@
 import Client from './api';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+// import Cookies from 'js-cookie';
+// import axios from 'axios';
 
 const config = {
   headers: { 'content-type': 'application/json' },
@@ -25,7 +25,7 @@ export const GetAllSubscriptions = async () => {
 export const AddSubscription = async (feed) => {
   // console.log(`CSRF Token: ${csrftoken}`);
   try {
-    const res = await Client.post('/subscriptions/', { feed });
+    const res = await Client.post('/subscriptions', { feed });
     return res;
   } catch (error) {
     throw error;

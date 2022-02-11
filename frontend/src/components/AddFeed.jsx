@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import {AddSubscription, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
 import axios from 'axios';
 import Cookies from 'js-cookie';
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -49,19 +49,20 @@ export default function AddFeed(props) {
 			});
 		}
 	};
-  const AddSubscription = async (feed) => {
-    console.log(csrftoken)
-    try {
-      const res = await axios.post('http://localhost:8000/api/subscriptions/', { feed }, {
-        headers: {
-          'content-type': 'text/json',
-          'X-CSRFToken': 'Leal6RM9X7o4eWmQPFNDN2B91xTW5DryKjiTsg1dAzqoihB9tJ7yWXpi9ifvmtQZ'
-        }})
-      return res;
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const AddSubscription = async (feed) => {
+  //   // console.log(csrftoken)
+  //   try {
+  //     const res = await AddSubscription(feed)
+  //     // const res = await axios.post('http://localhost:8000/api/subscriptions', { feed }, {
+  //     //   headers: {
+  //     //     'content-type': 'text/json',
+  //     //     'X-CSRFToken': 'Leal6RM9X7o4eWmQPFNDN2B91xTW5DryKjiTsg1dAzqoihB9tJ7yWXpi9ifvmtQZ'
+  //     //   }})
+  //     return res;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   const addFeed = async (e)=>{
     e.preventDefault()
     // console.log('add!')
