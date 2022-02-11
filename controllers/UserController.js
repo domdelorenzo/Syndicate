@@ -14,7 +14,7 @@ const GetUserById = async (req, res) => {
     let id = parseInt(req.params.user_id);
     const user = await User.findOne({
       where: { id: id },
-      include: [Folder],
+      // include: [Folder],
       attributes: ['id', 'email', 'username']
     });
     res.send(user);
