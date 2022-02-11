@@ -14,11 +14,11 @@ export default function FeedList(props) {
   },[])
   return (
     <div>
-      <div> Feed List </div>;
+      <div> Feed List </div>
       <section className='feedlist'>
-        {feedlist.map((article)=>(
-          <div className='article' key={article.id}>
-            <p>{article.name}</p>
+        {feedlist.map((feed)=>(
+          <div className='feedcard' key={feed.id}>
+            <p>{feed.name}</p>
           </div>
         ))}
       </section>

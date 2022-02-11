@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {read} from 'feed-reader'
 import Parser from 'rss-parser'
+import Article from './Article';
 
 export default function ReadingPane(props) {
   const [articles, setArticles] = useState([])
@@ -60,14 +61,21 @@ export default function ReadingPane(props) {
   console.log(articles)
   return (
     <div>
-      <div> Folder List </div>;
+      <div> Folder List </div>
       <section className='articlelist'>
       {articles.map((article)=>(
-          <div className='article' key={article.id}>
-            <h3>{article.title}</h3>
+          <div className='article' key={article.guid}>
+            <Article 
+
+              title={article.title}
+              fullcontent={article['content:encoded']}
+              snippet={article.content}
+              date={article.pubDate}
+            />
+            {/* <h3>{article.title}</h3> */}
             {/* <span>{article['content:encoded']}</span> */}
-            <div dangerouslySetInnerHTML={{__html: `${article['content:encoded']}`}} ></div>
-            <h6>{article.pubDate}</h6>
+            {/* <div dangerouslySetInnerHTML={{__html: `${article['content:encoded']}`}} ></div> */}
+            {/* <h6>{article.pubDate}</h6> */}
           </div>
         ))}
  
