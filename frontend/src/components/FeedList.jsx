@@ -3,10 +3,9 @@ import FeedElement from './FeedElement'
 
 
 export default function FeedList(props) {
-  const [expanded, setExpanded]= useState(false)
+  const [expanded, setExpanded]= useState(true)
   const toggleExpand = () => {
     setExpanded(bool => !bool)
-    console.log(expanded)
   }
 
   return (
@@ -15,7 +14,7 @@ export default function FeedList(props) {
       <div className='folder-name' onClick={toggleExpand} >{props.name}</div>
       {expanded ? 
             <div></div> :
-      <div classname='feed-list'>
+      <div className='feed-list'>
       {props.subscriptions.map((feed)=>(
           <FeedElement
             url={feed}

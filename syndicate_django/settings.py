@@ -55,11 +55,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+# CORS_ALLOW_CREDENTIALS = True
+# ALLOWED_HOSTS = ['*']
+# CORS_EXPOSE_HEADERS = (
+#     'Access-Control-Allow-Origin: *',
+# )
+# CORS_ALLOWED_ORIGINS= [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000"
+# ]
+
+# CORS_ALLOW_HEADERS = (
+#     'xsrfheadername',
+#     'xsrfcookiename',
+#     'content-type',
+#     'XSRF-TOKEN',
+# )
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+# CORS_ALLOW_CREDENTIALS = False
 
 ROOT_URLCONF = 'syndicate_django.urls'
 
@@ -135,10 +152,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # make React build accessible to Django
-STATIC_ROOT ='.static'
-STATICFILES_DIRS = [
+# STATIC_ROOT ='.static'
+# STATICFILES_DIRS = [
     # 'frontend/build/'
-]
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -177,3 +194,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout'
 # LOGIN_REDIRECT_URL = 'home'
+
+# Make CSRF accessible to Axios
+# CSRF_COOKIE_NAME = "XSRF-TOKEN"
+
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = False
+CSRF_TRUSTED_ORIGINS= [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+
+

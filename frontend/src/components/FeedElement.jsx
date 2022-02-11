@@ -6,7 +6,6 @@ export default function FeedElement(props) {
   const [feed, setFeed] = useState({})
   const getSubscription = async () => {
     const res = await axios.get(props.url)
-    console.log(res)
     setFeed(res.data)
     return(res)
   }

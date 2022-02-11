@@ -19,10 +19,10 @@ export default function ReadingPane(props) {
   //   }
   // }
   useEffect(()=>{
-    const url = 'https://cors-anywhere.herokuapp.com/https://goingmedievalblog.wordpress.com/feed/'
+    // const url = 'https://cors-anywhere.herokuapp.com/https://goingmedievalblog.wordpress.com/feed/'
     // const url = 'https://goingmedievalblog.wordpress.com/feed/'
     // const url = 'https://cors-anywhere.herokuapp.com/https://cdn.hackernoon.com/feed'
-    // const url = 'https://www.wired.com/feed'
+    const url = 'https://www.wired.com/feed'
     // getFeedData(url)
     // const parser = new Parser()
     const filterPosts = (items, limit)=>{
@@ -61,7 +61,6 @@ export default function ReadingPane(props) {
   console.log(articles)
   return (
     <div>
-      <div> Folder List </div>
       <section className='articlelist'>
       {articles.map((article)=>(
           <div className='article' key={article.guid}>
