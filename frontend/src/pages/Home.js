@@ -1,6 +1,5 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import FeedList from '../components/FeedList';
 import ReadingPane from '../components/ReadingPane';
 
 export default function Home(props) {
@@ -10,9 +9,6 @@ export default function Home(props) {
       <div className="home-container">
         <div className="sidebar">
           <Sidebar />
-        </div>
-        <div className="feedlist">
-          <FeedList />
         </div>
         <div className="readingPane">
           <ReadingPane />

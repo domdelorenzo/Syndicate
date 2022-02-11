@@ -44,7 +44,7 @@
 }
 
 .sidebar {
-  background-color:rgb(3, 110, 30);
+  background-color:rgb(185, 185, 185);
   width: 25%;
   height: 100%;
 }
@@ -64,4 +64,10 @@
 
 .full-content {
   font-size: 1rem;
+}
+
+.folder-name {
+  color: rgb(51, 51, 51);
+  font-size: 1.2rem;
+  font-weight: 700;
 }

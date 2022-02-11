@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {read} from 'feed-reader'
+// import {read} from 'feed-reader'
 import Parser from 'rss-parser'
 import Article from './Article';
 
@@ -24,7 +24,7 @@ export default function ReadingPane(props) {
     // const url = 'https://cors-anywhere.herokuapp.com/https://cdn.hackernoon.com/feed'
     // const url = 'https://www.wired.com/feed'
     // getFeedData(url)
-    const parser = new Parser()
+    // const parser = new Parser()
     const filterPosts = (items, limit)=>{
     }
     const fetchArticles = async ()=> {
