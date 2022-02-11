@@ -24,7 +24,6 @@ export default function Article(props) {
         date={props.date}
       />
     }
-
     </div>
 
     );

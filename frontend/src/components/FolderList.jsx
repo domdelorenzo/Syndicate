@@ -4,11 +4,10 @@ import { GetAllFolders } from '../Services/endpoints';
 
 export default function FolderList(props) {
   const [folderlist, setFolderlist] = useState([])
-  
+ 
 
   const getFolders = async () => {
     const response = await GetAllFolders();
-    // console.log(response[0].subscriptions);
     setFolderlist(response)
     return;
   }
@@ -17,15 +16,14 @@ export default function FolderList(props) {
   },[])
   return (
     <div>
-      <div> Folder List </div>;
+      <div> Folders </div>
       <section className='folderlist'>
         {folderlist.map((folder)=>(
-          <div className='folder-container' key={folder.id}>
-            <div className='folder-name'>{folder.folder_name}</div>
-            <FeedList subscriptions={folder.subscriptions} />
-
+          <div className='folder-container'  key={folder.id}>
+            <FeedList 
+            name={folder.folder_name} subscriptions={folder.subscriptions} />
           </div>
-        ))}
+        ))}  
       </section>
     </div>
   )

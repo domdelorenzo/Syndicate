@@ -4,5 +4,5 @@ import FolderList from './FolderList';
 
 export default function Sidebar(props) {
 
-  return <div> Sidebar <FolderList/></div>;
+  return <div> Sidebar <FolderList/></div>
 }
