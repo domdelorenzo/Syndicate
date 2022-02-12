@@ -15,11 +15,10 @@ export const GetAllSubscriptions = async () => {
   return res.data;
 };
 
-export const AddSubscription = async (feed) => {
-  // console.log(`CSRF Token: ${csrftoken}`);
+export const CreateFeed = async (feed) => {
   try {
-    const res = await Client.post('/feed/new/', { feed });
-    return res;
+    const res = await Client.post('/feed/new/', feed);
+    return res.data;
   } catch (error) {
     throw error;
   }
