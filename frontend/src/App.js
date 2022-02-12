@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
