@@ -8,8 +8,8 @@ Router.get('/', (req, res) => {
   res.send('This is root');
 });
 Router.use('/user', UserRouter);
-// Router.use('/folder', FolderRouter);
-// Router.use('/feed', FeedRouter);
+Router.use('/folder', FolderRouter);
+Router.use('/feed', FeedRouter);
 // Router.use('/auth', AuthRouter);
 
 module.exports = Router;
