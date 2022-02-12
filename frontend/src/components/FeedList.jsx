@@ -25,9 +25,10 @@ export default function FeedList(props) {
       {expanded ? 
             <div></div> :
       <div className='feed-list'>
-      {props.subscriptions.map((feed)=>(
+      {feeds.map((feed)=>(
           <FeedElement
-            url={feed}
+            feed_name={feed.feed_name}
+            url={feed.url}
           />
         ))}
         </div>

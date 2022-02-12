@@ -3,19 +3,19 @@ import axios from 'axios';
 
 
 export default function FeedElement(props) {
-  const [feed, setFeed] = useState({})
-  const getSubscription = async () => {
-    const res = await axios.get(props.url)
-    setFeed(res.data)
-    return(res)
-  }
+  // const [feed, setFeed] = useState({})
+  // const getSubscription = async () => {
+  //   const res = await axios.get(props.url)
+  //   setFeed(res.data)
+  //   return(res)
+  // }
 
-  useEffect(()=>{
-    getSubscription()
-  },[])
+  // useEffect(()=>{
+  //   getSubscription()
+  // },[])
   return (
     <div>
-      <div className='feed-entry'>{feed.name}</div>
+      <div className='feed-entry'>{props.feed_name}</div>
     </div>
   )
 }
