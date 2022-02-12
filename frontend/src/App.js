@@ -6,13 +6,11 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
   return (
     <div className="App">
       <Routes>
-        <Route path="/static" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/dashboard" element={<Dashoard />} /> */}
       </Routes>
     </div>
   );
