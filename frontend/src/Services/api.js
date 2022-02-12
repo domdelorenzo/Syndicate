@@ -1,6 +1,5 @@
 import axios from 'axios';
+import { BASE_URL } from '../globals';
 
-export const API_URL = 'http://localhost:3001/api';
-
-const Client = axios.create({ baseURL: API_URL });
+const Client = axios.create({ baseURL: BASE_URL });
 export default Client;
