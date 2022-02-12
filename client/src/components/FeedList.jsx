@@ -12,11 +12,9 @@ export default function FeedList(props) {
   const fetchFeeds = async () => {
     const res = await GetAllSubscriptions()
     setFeeds(res)
-    console.log(res)
   }
   useEffect(()=>{
     fetchFeeds()
-    console.log(feeds)
   },[])
   return (
     <div>
