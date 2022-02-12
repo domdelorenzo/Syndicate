@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { GetAllFolders, GetFolderDetail } from '../Services/endpoints'
-import axios from 'axios';
-import Cookies from 'js-cookie';
-// axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-// axios.defaults.xsrfCookieName = 'csrftoken';
+import { CreateFeed, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
 
 export default function AddFeed(props) {
-  const csrftoken = Cookies.get('csrftoken');
   const [openDrop, setOpenDrop] = useState(true);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])
   const [newFeed, setNewFeed] = useState({
-    "user_id": 1,
-    "folder_id": "",
-    "name": "",
+    "userId": 1,
+    "folderId": "",
+    "feed_name": "",
     "url": "",
     "favorite": false
   })
@@ -45,32 +40,21 @@ export default function AddFeed(props) {
       folderSelector(e.target.id)
 			setNewFeed({
 				...newFeed,
-				folder_id: parseInt(e.target.id),
+				folderId: parseInt(e.target.id),
 			});
 		}
 	};
-  const AddSubscription = async (feed) => {
-    console.log(csrftoken)
-    try {
-      const res = await axios.post('http://localhost:8000/api/subscriptions/', { feed }, {
-        headers: {
-          'content-type': 'text/json',
-          'X-CSRFToken': 'Leal6RM9X7o4eWmQPFNDN2B91xTW5DryKjiTsg1dAzqoihB9tJ7yWXpi9ifvmtQZ'
-        }})
-      return res;
-    } catch (error) {
-      throw error;
-    }
-  };
+
   const addFeed = async (e)=>{
     e.preventDefault()
     // console.log('add!')
-    await AddSubscription(newFeed)
+    await CreateFeed(newFeed)
     console.log(newFeed)
   }
   const getFolders = async () => {
     const response = await GetAllFolders();
     setFolderlist(response)
+    console.log(response)
     return;
   }
   useEffect(()=>{
@@ -88,7 +72,7 @@ export default function AddFeed(props) {
         <input
           type="text"
           placeholder="Feed name"
-          name="name"
+          name="feed_name"
           onChange={handleChange}/>
         
 

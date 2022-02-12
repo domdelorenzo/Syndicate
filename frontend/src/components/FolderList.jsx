@@ -21,7 +21,7 @@ export default function FolderList(props) {
         {folderlist.map((folder)=>(
           <div className='folder-container'  key={folder.id}>
             <FeedList 
-            name={folder.folder_name} subscriptions={folder.subscriptions} />
+            name={folder.folder_name} id={folder.id} />
           </div>
         ))}  
       </section>

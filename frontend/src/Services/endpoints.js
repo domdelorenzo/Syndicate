@@ -1,32 +1,24 @@
 import Client from './api';
-import Cookies from 'js-cookie';
-import axios from 'axios';
-
-const config = {
-  headers: { 'content-type': 'application/json' },
-  withCredentials: true
-};
 
 export const GetAllUsers = async () => {
-  const res = await Client.get('/users');
+  const res = await Client.get('/user');
   return res.data;
 };
 
 export const GetAllFolders = async () => {
-  const res = await Client.get('/folders');
+  const res = await Client.get('/folder');
   return res.data;
 };
 
 export const GetAllSubscriptions = async () => {
-  const res = await Client.get('/subscriptions');
+  const res = await Client.get('/feed');
   return res.data;
 };
 
-export const AddSubscription = async (feed) => {
-  // console.log(`CSRF Token: ${csrftoken}`);
+export const CreateFeed = async (feed) => {
   try {
-    const res = await Client.post('/subscriptions/', { feed });
-    return res;
+    const res = await Client.post('/feed/new/', feed);
+    return res.data;
   } catch (error) {
     throw error;
   }
