@@ -50,7 +50,8 @@ export default function EditFeedForm(props) {
   const updateFeed = async (e)=>{
     e.preventDefault()
     // console.log('add!')
-    // await Edit(feedslug)
+    // await EditFeed(feedid,feedslug.feed_name, feedslug.feed_url, feedslug.folder_id)
+    await EditFeed(feedid,feedslug)
     console.log(feedslug)
   }
   const getFolders = async () => {
@@ -59,9 +60,17 @@ export default function EditFeedForm(props) {
     return;
   }
   const getCurrentFeed = async (id) => {
+    let tempFeed = {
+      "feed_name": "",
+      "url": "",
+      "folderId": ""
+    }
     try {
       const res = await GetFeedDetail(id)
-      setFeedslug(res.data)
+      tempFeed.feed_name =res.data.feed_name
+      tempFeed.url =res.data.url
+      tempFeed.folderId=res.data.folderId
+      setFeedslug(tempFeed)
     } catch (error){
       console.log(error)
     }
@@ -130,7 +139,7 @@ export default function EditFeedForm(props) {
 
           </div>
         </div>
-        <button type="submit">Add feed</button>
+        <button type="submit">Update feed</button>
       </form>
     </div>
 
