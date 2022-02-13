@@ -24,6 +24,15 @@ export const CreateFeed = async (feed) => {
   }
 };
 
+export const DeleteFeed = async (id) => {
+  try {
+    const res = await Client.delete(`/feed/${id}`);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const GetFolderDetail = async (id) => {
   try {
     const res = await Client.get(`/folder/${id}`);

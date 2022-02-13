@@ -27,6 +27,7 @@ export default function FeedList(props) {
           <FeedElement
             feed_name={feed.feed_name}
             url={feed.url}
+            id={feed.id}
           />
         ))}
         </div>

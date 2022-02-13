@@ -4,6 +4,7 @@ import axios from 'axios';
 import Parser from 'rss-parser'
 import Article from './Article';
 import { FeedContext } from '../pages/Home';
+import FeedSettingsPanel from './FeedSettingsPanel';
 
 export default function ReadingPane(props) {
   const [articles, setArticles] = useState([])
@@ -57,6 +58,7 @@ export default function ReadingPane(props) {
   return (
     <div>
       <header>Hello {feedurl}!</header>
+      <FeedSettingsPanel/>
       <section className='articlelist'>
       {articles.map((article)=>(
           <div className='article' key={article.guid}>
