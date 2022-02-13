@@ -68,17 +68,10 @@ export default function EditFeedForm(props) {
     } catch (error){
       console.log(error)
     }
-    
-    // console.log(id)
-    // console.log(res)
-    
-    // console.log(feedslug)
   }
 
   const updateFeed = async (e)=>{
     e.preventDefault()
-    // console.log('add!')
-    // await EditFeed(feedid,feedslug.feed_name, feedslug.feed_url, feedslug.folder_id)
     await EditFeed(feedid,feedslug)
     console.log(feedslug)
   }
@@ -94,12 +87,12 @@ export default function EditFeedForm(props) {
       <form onSubmit={updateFeed}>
         <input 
           type="text"
-          placeholder="Paste a RSS URL"
+          placeholder={feedslug.url}
           name="url"
           onChange={handleChange}/>
         <input
           type="text"
-          placeholder="Feed name"
+          placeholder={feedslug.feed_name}
           name="feed_name"
           onChange={handleChange}/>
 

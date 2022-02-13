@@ -8,7 +8,8 @@ Router.get(`/user/:user_id`, controller.GetFoldersByUserId);
 Router.post('/new/', controller.CreateFolder);
 // Router.post('/new/', stripToken, verifyToken, controller.CreateFolder);
 Router.put('/:folder_id', stripToken, verifyToken, controller.UpdateFolder);
-Router.delete('/:folder_id', stripToken, verifyToken, controller.DeleteFolder);
+Router.delete('/:folder_id', controller.DeleteFolder);
+// Router.delete('/:folder_id', stripToken, verifyToken, controller.DeleteFolder);
 Router.get('/user/:user_id', controller.GetFolderByUser);
 
 module.exports = Router;
