@@ -25,6 +25,7 @@ export default function FeedList(props) {
       <div className='feed-list'>
       {feeds.map((feed)=>(
           <FeedElement
+            key={feed.id}
             feed_name={feed.feed_name}
             url={feed.url}
             id={feed.id}

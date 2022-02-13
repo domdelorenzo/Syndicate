@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { FeedContext } from '../pages/Home';
 import { DeleteFeed } from '../Services/endpoints';
+import EditFeedForm from './EditFeedForm';
 
 export default function FeedSettingsPanel(props) {
-  const {feedid} =useContext(FeedContext)
+  const {feedid} = useContext(FeedContext)
   const deleteFeed = async (e) =>{
     e.preventDefault()
     const res = await DeleteFeed(feedid)
@@ -15,6 +16,7 @@ export default function FeedSettingsPanel(props) {
     <div>
       <div className='delete-btn' onClick={deleteFeed}>Delete</div>
       <div className='edit-btn'>Edit</div>
+      <EditFeedForm/>
     </div>
   )
 }

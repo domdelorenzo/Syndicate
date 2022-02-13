@@ -1,8 +1,6 @@
 import React, { useState, createContext } from 'react';
 import Sidebar from '../components/Sidebar';
 import ReadingPane from '../components/ReadingPane';
-// import FeedContext from '../context/FeedContext';
-// import { FeedContext } from '../context/FeedContext';
 export const FeedContext = createContext();
 
 export default function Home(props) {

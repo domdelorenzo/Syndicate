@@ -2,7 +2,7 @@ const Router = require('express').Router();
 const controller = require('../controllers/FeedController');
 const { stripToken, verifyToken } = require('../middleware');
 
-Router.get('/', controller.GetAllFeeds);
+Router.get('/all', controller.GetAllFeeds);
 Router.get('/:feed_id', controller.GetFeedByID);
 Router.get('/user/:user_id', controller.GetFeedByUserId);
 Router.post('/new/', controller.CreateFeed);

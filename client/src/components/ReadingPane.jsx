@@ -33,7 +33,8 @@ export default function ReadingPane(props) {
     // }
     const fetchArticles = async ()=> {
     if (feedurl){
-      const feed = await axios.get(feedurl)
+      // const feed = await axios.get(feedurl)
+      const feed = await axios.get(url)
       .then((res) => {
         let parser = new Parser();
         parser.parseString(res.data, (err, feed)=> {
@@ -43,18 +44,18 @@ export default function ReadingPane(props) {
       .catch((err) => {
         console.log(err);
       })
-      console.log(feed)
+      // console.log(feed)
     }
     
     }
     fetchArticles()
     
     
-    console.log(feedurl)
+    // console.log(feedurl)
     
   },[feedurl])
-  console.log(feedurl)
-  console.log(articles)
+  // console.log(feedurl)
+  // console.log(articles)
   return (
     <div>
       <header>Hello {feedurl}!</header>
