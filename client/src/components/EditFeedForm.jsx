@@ -59,14 +59,20 @@ export default function EditFeedForm(props) {
     return;
   }
   const getCurrentFeed = async (id) => {
-    const res = await GetFeedDetail(id)
+    try {
+      const res = await GetFeedDetail(id)
+      setFeedslug(res.data)
+    } catch (error){
+      console.log(error)
+    }
+    
     // console.log(id)
     // console.log(res)
-    setFeedslug(res.data)
+    
     // console.log(feedslug)
   }
   useEffect(()=>{
-    // getCurrentFeed(feedid)
+    getCurrentFeed(feedid)
     getFolders()
     displayFolder()
     console.log(feedid)
