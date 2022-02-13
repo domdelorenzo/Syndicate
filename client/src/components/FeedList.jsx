@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FeedElement from './FeedElement'
-import { GetAllSubscriptions } from '../Services/endpoints';
+import { GetAllSubscriptions, GetFeedByFolder } from '../Services/endpoints';
 
 
 export default function FeedList(props) {
@@ -10,8 +10,8 @@ export default function FeedList(props) {
     setExpanded(bool => !bool)
   }
   const fetchFeeds = async () => {
-    const res = await GetAllSubscriptions()
-    setFeeds(res)
+    const res = await GetFeedByFolder(props.id)
+    setFeeds(res.data)
   }
   useEffect(()=>{
     fetchFeeds()

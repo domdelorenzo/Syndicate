@@ -47,13 +47,7 @@ export default function EditFeedForm(props) {
 		}
 	};
 
-  const updateFeed = async (e)=>{
-    e.preventDefault()
-    // console.log('add!')
-    // await EditFeed(feedid,feedslug.feed_name, feedslug.feed_url, feedslug.folder_id)
-    await EditFeed(feedid,feedslug)
-    console.log(feedslug)
-  }
+ 
   const getFolders = async () => {
     const response = await GetAllFolders();
     setFolderlist(response)
@@ -79,6 +73,14 @@ export default function EditFeedForm(props) {
     // console.log(res)
     
     // console.log(feedslug)
+  }
+
+  const updateFeed = async (e)=>{
+    e.preventDefault()
+    // console.log('add!')
+    // await EditFeed(feedid,feedslug.feed_name, feedslug.feed_url, feedslug.folder_id)
+    await EditFeed(feedid,feedslug)
+    console.log(feedslug)
   }
   useEffect(()=>{
     getCurrentFeed(feedid)

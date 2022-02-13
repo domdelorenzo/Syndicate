@@ -35,6 +35,15 @@ export const GetFeedDetail = async (id) => {
     throw error;
   }
 };
+
+export const GetFeedByFolder = async (id) => {
+  try {
+    const res = await Client.get(`/feed/folder/${id}`);
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};
 export const CreateFeed = async (feed) => {
   try {
     const res = await Client.post('/feed/new/', feed);
@@ -44,16 +53,9 @@ export const CreateFeed = async (feed) => {
   }
 };
 
-// export const EditFeed = async (id, feed_name, feed_url, fav_val, folder_id) => {
 export const EditFeed = async (id, object) => {
   try {
     const res = await Client.put(`/feed/${id}`, object);
-    // {
-    //   feed_name: feed_name,
-    //   url: feed_url,
-    //   favorite: fav_val,
-    //   folderId: folder_id
-    // });
     return res.data;
   } catch (error) {
     throw error;

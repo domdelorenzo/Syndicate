@@ -4,6 +4,7 @@ const { stripToken, verifyToken } = require('../middleware');
 
 Router.get('/all', controller.GetAllFeeds);
 Router.get('/:feed_id', controller.GetFeedByID);
+Router.get('/folder/:folder_id', controller.GetFeedByFolder);
 Router.get('/user/:user_id', controller.GetFeedByUserId);
 Router.post('/new/', controller.CreateFeed);
 // Router.post('/new/', stripToken, verifyToken, controller.CreateFeed);

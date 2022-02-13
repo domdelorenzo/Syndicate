@@ -32,6 +32,17 @@ const GetFeedByUserId = async (req, res) => {
   }
 };
 
+const GetFeedByFolder = async (req, res) => {
+  try {
+    const feeds = await Feed.findAll({
+      where: { folder_id: req.params.folder_id }
+    });
+    res.send(feeds);
+  } catch (error) {
+    throw error;
+  }
+};
+
 const CreateFeed = async (req, res) => {
   try {
     let feed = await Feed.create(req.body);
@@ -70,6 +81,7 @@ module.exports = {
   GetAllFeeds,
   GetFeedByID,
   GetFeedByUserId,
+  GetFeedByFolder,
   UpdateFeed,
   DeleteFeed
 };
