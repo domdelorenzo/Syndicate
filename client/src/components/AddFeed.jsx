@@ -15,7 +15,7 @@ export default function AddFeed(props) {
   })
   let buttonDisplay ='Select Folder'
   const displayFolder = () => {
-    let folder = newFeed.folder_id
+    let folder = newFeed.folderId
     if (folder === '') {
       buttonDisplay = 'Select Folder'
     } else {

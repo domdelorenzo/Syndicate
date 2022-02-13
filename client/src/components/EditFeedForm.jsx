@@ -16,7 +16,7 @@ export default function EditFeedForm(props) {
   })
   let buttonDisplay ='Select Folder'
   const displayFolder = () => {
-    let folder = feedslug.folder_id
+    let folder = feedslug.folderId
     if (folder === '') {
       buttonDisplay = 'Select Folder'
     } else {
@@ -64,6 +64,7 @@ export default function EditFeedForm(props) {
       tempFeed.feed_name =res.data.feed_name
       tempFeed.url =res.data.url
       tempFeed.folderId=res.data.folderId
+      folderSelector(res.data.folderId)
       setFeedslug(tempFeed)
     } catch (error){
       console.log(error)
