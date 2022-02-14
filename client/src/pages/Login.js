@@ -14,11 +14,10 @@ export default function Login(props) {
     e.preventDefault();
     const res = await LogInUser(logIn);
     setUser(res);
-    console.log(res);
     setLogIn({});
     setAuth(true);
   };
-  console.log(props);
+
   return (
     <div className="SignIn">
       <div className="signin-left-side"></div>

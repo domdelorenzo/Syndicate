@@ -21,6 +21,15 @@ export const GetFolderDetail = async (id) => {
   }
 };
 
+export const GetFolderByUser = async (id) => {
+  try {
+    const res = await Client.get(`/folder/user/${id}`);
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const CreateFolder = async (object) => {
   try {
     const res = await Client.post('/folder/new/', object);

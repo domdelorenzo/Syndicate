@@ -13,17 +13,18 @@ function App() {
   const [auth, setAuth] = useState(false);
 
   const checkToken = async () => {
-    const res = await CheckSession();
-    // setUser(res);
-    console.log(res);
+    const user = await CheckSession();
+    setUser(user);
+    console.log(user);
     setAuth(true);
   };
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       checkToken();
+      console.log('token check triggered');
     }
-  }, [user]);
+  }, []);
   return (
     <UserContext.Provider value={{ user, setUser, auth, setAuth }}>
       <div className="App">

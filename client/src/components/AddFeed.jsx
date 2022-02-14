@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useContext } from 'react';
-import { CreateFeed, CreateFolder, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import { CreateFeed, CreateFolder, GetFolderDetail, GetFolderByUser } from '../Services/endpoints'
 import { UserContext } from '../App';
 
 export default function AddFeed(props) {
@@ -10,7 +10,7 @@ export default function AddFeed(props) {
   const [folderlist, setFolderlist] = useState([])
   const [newFolder, setNewFolder] =useState({})
   const [newFeed, setNewFeed] = useState({
-    "userId": 1,
+    "userId": "",
     "folderId": "",
     "feed_name": "",
     "url": "",
@@ -32,7 +32,7 @@ export default function AddFeed(props) {
     setSelectedFolder(res.data)
   }
   const handleChange = (e) => {
-    setNewFeed({...newFeed, [e.target.name]: e.target.value });
+    setNewFeed({...newFeed, userId: user.id, [e.target.name]: e.target.value });
     console.log({...newFeed, [e.target.name]: e.target.value });
   }
   const folderDropdownHandler = (e) => {
@@ -71,8 +71,8 @@ export default function AddFeed(props) {
     console.log(newFeed)
   }
   const getFolders = async () => {
-    const response = await GetAllFolders();
-    setFolderlist(response)
+    const response = await GetFolderByUser(user.id);
+    setFolderlist(response.data)
     console.log(response)
     return;
   }
