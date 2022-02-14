@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import { UserContext } from '../App';
+import logo512 from '../assets/logo512.png';
 
 export default function Navbar(props) {
   const {setUser, setAuth} = useContext(UserContext)
@@ -10,9 +11,14 @@ export default function Navbar(props) {
 	};
   return(
     <div>
-      <button primary className='logout-btn' onClick={logout}>
-      Logout
-      </button>
+      <div className='nav-container'>
+        <img className="small-logo" src={logo512}></img>
+        <div className='brand'>Syndicate</div>
+        <button  className='logout-btn highlight-btn' onClick={logout}>
+        Logout
+        </button>
+      </div>
+      
     </div>
     
   )

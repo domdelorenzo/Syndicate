@@ -35,7 +35,6 @@ const checkUserData = async () => {
               name={folder.folder_name} id={folder.id} />
             </div>
           ))}
-          <button onClick={checkUserData}>checkuser</button>  
           </section>
           :
           <div>No folders</div>

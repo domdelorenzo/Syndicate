@@ -14,8 +14,9 @@ export default function FeedSettingsPanel(props) {
 
   return (
     <div>
-      <div className='delete-btn' onClick={deleteFeed}>Delete</div>
-      <div className='edit-btn'>Edit</div>
+      <div className='normal-btn edit-btn'>Edit</div>
+      <div className='highlight-btn delete-btn' onClick={deleteFeed}>Delete</div>
+      
       <EditFeedForm/>
     </div>
   )

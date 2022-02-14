@@ -99,7 +99,7 @@ export default function EditFeedForm(props) {
 
         <div className='folder-dropdown-container'>
           <div
-            className='select-folder-bttn'
+            className='normal-btn'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
             {buttonDisplay}
           </div>
