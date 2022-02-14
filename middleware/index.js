@@ -25,53 +25,18 @@ const createToken = (payload) => {
 
 // routes for authorization
 
-// const verifyToken = (request, response, next) => {
-//   //let's access the authorization header
-//   const authHeader = request.headers['authorization'];
-//   const token = authHeader && authHeader.split(' ')[1];
-//   if (token === null || typeof token === 'undefined') {
-//     //tell the user you do not have access
-//     response.status(401).json({ message: 'Unauthorized Access!' });
-//   }
-
-//   //if token is not null then
-//   jwt.verify(token, secretCode, (error, user) => {
-//     if (error)
-//       return response
-//         .status(403)
-//         .json({ message: 'Forbidden Access:Token Expired!' });
-
-//     //if the user is verified
-//     request.user = user;
-//     next(); //move on
-//   });
-// };
-
-// const verifyToken = (req, res, next) => {
-//   const token = res.locals.token;
-//   try {
-//     let payload = jwt.verify(token, APP_SECRET);
-//     if (payload) {
-//       res.locals.payload = payload;
-//       return next();
-//     }
-//     res.status(401).send({ status: 'Error', message: 'Unauthorized' });
-//   } catch (error) {
-//     res.status(401).send({ status: 'Error', message: 'Unathorized' });
-//   }
-// };
 const verifyToken = (req, res, next) => {
-  const { token } = res.locals;
-  //   Gets the token stored in the request lifecycle state
-  let payload = jwt.verify(token, APP_SECRET);
-  //   Verifys the token is legit
-  if (payload) {
-    res.locals.payload = payload; // Passes the decoded payload to the next function
-
-    //   Calls the next function if the token is valid
-    return next();
+  const token = res.locals.token;
+  try {
+    let payload = jwt.verify(token, APP_SECRET);
+    if (payload) {
+      res.locals.payload = payload;
+      return next();
+    }
+    res.status(401).send({ status: 'Error', message: 'Unauthorized' });
+  } catch (error) {
+    res.status(401).send({ status: 'Error', message: 'Unathorized' });
   }
-  res.status(401).send({ status: 'Error', msg: 'Unauthorized' });
 };
 
 const stripToken = (req, res, next) => {
@@ -82,7 +47,7 @@ const stripToken = (req, res, next) => {
       return next();
     }
   } catch (error) {
-    res.status(401).send({ status: 'Error', message: 'Unauthorized' });
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' });
   }
 };
 

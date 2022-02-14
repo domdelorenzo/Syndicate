@@ -23,7 +23,7 @@ export const GetFolderDetail = async (id) => {
 
 export const CreateFolder = async (object) => {
   try {
-    const res = await Client.post('/folder', object);
+    const res = await Client.post('/folder/new/', object);
     return res;
   } catch (error) {
     throw error;

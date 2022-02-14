@@ -31,10 +31,7 @@ function App() {
           <div>
             <Navbar />
             <Routes>
-              <Route
-                path="/"
-                element={<Home setUser={setUser} setAuth={setAuth} />}
-              />
+              <Route path="/" element={<Home />} />
             </Routes>
           </div>
         ) : (
