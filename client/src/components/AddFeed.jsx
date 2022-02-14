@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { CreateFeed, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import e from 'cors';
+import React, { useState, useEffect,useContext } from 'react';
+import { CreateFeed, CreateFolder, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import { UserContext } from '../App';
 
 export default function AddFeed(props) {
+  const {user} = useContext(UserContext)
   const [openDrop, setOpenDrop] = useState(true);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])
+  const [newFolder, setNewFolder] =useState({})
   const [newFeed, setNewFeed] = useState({
     "userId": 1,
     "folderId": "",
@@ -44,10 +48,23 @@ export default function AddFeed(props) {
 			});
 		}
 	};
+  const folderInputChange = (e) => {
+    setNewFolder({
+      userId: user.id,
+      [e.target.name]: e.target.value
+    })
+  }
+  const postNewFolder = async () => {
+    e.preventDefault()
+    const res = await CreateFolder(newFolder)
+    setFolderInput(false)
+    return res
+  }
+
+
 
   const addFeed = async (e)=>{
     e.preventDefault()
-    // console.log('add!')
     await CreateFeed(newFeed)
     console.log(newFeed)
   }
@@ -94,23 +111,23 @@ export default function AddFeed(props) {
                   {e.folder_name}
                 </div>
               ))}
-            {/* {openDrop && (
+            {openDrop && (
               <div
                 className='folder-dropdown-element'
                 id='newFolder'
                 onClick={folderDropdownHandler}>
                 New tag
               </div>
-            )} */}
-            {/* {folderInput && (
+            )}
+            {folderInput && (
               <form onSubmit={postNewFolder}>
                 <input
                   className='folder-input-form'
-                  name='folder'
+                  name='folder_name'
                   onChange={folderInputChange}
                   placeholder='Enter Folder name...'></input>
               </form>
-            )} */}
+            )}
 
           </div>
         </div>

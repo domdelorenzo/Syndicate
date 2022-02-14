@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FeedElement from './FeedElement'
-import { GetAllSubscriptions, GetFeedByFolder } from '../Services/endpoints';
+import { GetFeedByFolder } from '../Services/endpoints';
 
 
 export default function FeedList(props) {

@@ -21,9 +21,17 @@ export const GetFolderDetail = async (id) => {
   }
 };
 
+export const CreateFolder = async (object) => {
+  try {
+    const res = await Client.post('/folder', object);
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};
 /* Feed endpoints */
 
-export const GetAllSubscriptions = async () => {
+export const GetAllFeeds = async () => {
   const res = await Client.get('/feed/all');
   return res.data;
 };
