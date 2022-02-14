@@ -14,7 +14,7 @@ function App() {
 
   const checkToken = async () => {
     const res = await CheckSession();
-    setUser(res);
+    // setUser(res);
     console.log(res);
     setAuth(true);
   };

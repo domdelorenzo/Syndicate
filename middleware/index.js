@@ -3,9 +3,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS);
-// const SALT_ROUNDS = 12;
 const APP_SECRET = process.env.APP_SECRET;
-// const APP_SECRET = ddnppydwsecretkey;
 
 // login/signup controllers for authentication
 const hashPassword = async (password) => {
