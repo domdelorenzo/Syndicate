@@ -25,15 +25,15 @@ function App() {
     <div className="App">
       {auth ? (
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="/" element={<Login />} />
           <Route
-            path="/signup"
-            element={<Signup setUser={setUser} setAuth={setAuth} />}
+            path="/"
+            element={<Login setUser={setUser} setAuth={setAuth} />}
           />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       )}
     </div>
