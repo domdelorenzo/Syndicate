@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import { useAuth0 } from '@auth0/auth0-react';
+import Profile from './pages/Profile';
 
 function App() {
   const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
@@ -25,6 +26,13 @@ function App() {
         <button onClick={() => logout({ returnTo: window.location.origin })}>
           Log out
         </button>
+        <div className="App">
+          <Routes>
+            {/* <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} /> */}
+            <Route path="/" element={<Profile />} />
+          </Routes>
+        </div>
       </div>
     );
   } else {
