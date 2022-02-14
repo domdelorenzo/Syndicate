@@ -13,9 +13,9 @@
   height: 100%;
 }
 
-.readingPane {
+/* .readingPane {
   max-width: 90vw;
-}
+} */
 
 .title {
   color: rgb(51, 51, 51);
@@ -78,20 +78,20 @@
 	cursor: pointer;
 }
 
-.article-card {
-	/* text-overflow: ellipsis;
+/* .article-card {
+	text-overflow: ellipsis;
 	white-space: nowrap;
-  overflow: hidden; */
+  overflow: hidden;
 	max-height: 25vw;
 	width: 75vw;
-}
-.summary {
+} */
+/* .summary {
 	overflow: ellipsis;
 	white-space: pre;
   overflow: hidden;
 	height: 25vmin;
 	width: 75vmin;
-}
+} */
 
 /* sign-in page */
 .sign-in, .sign-up {

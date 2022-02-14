@@ -33,7 +33,6 @@ export default function AddFeed(props) {
   }
   const handleChange = (e) => {
     setNewFeed({...newFeed, userId: user.id, [e.target.name]: e.target.value });
-    console.log({...newFeed, [e.target.name]: e.target.value });
   }
   const folderDropdownHandler = (e) => {
 		if (e.target.id === 'newFolder') {
@@ -52,12 +51,9 @@ export default function AddFeed(props) {
       userId: user.id,
       [e.target.name]: e.target.value
     })
-    console.log(user)
-    console.log(newFolder)
   }
   const postNewFolder = async (e) => {
     e.preventDefault()
-    console.log(newFolder)
     const res = await CreateFolder(newFolder)
     setFolderInput(false)
     return res
@@ -68,12 +64,11 @@ export default function AddFeed(props) {
   const addFeed = async (e)=>{
     e.preventDefault()
     await CreateFeed(newFeed)
-    console.log(newFeed)
   }
   const getFolders = async () => {
     const response = await GetFolderByUser(user.id);
     setFolderlist(response.data)
-    console.log(response)
+
     return;
   }
   useEffect(()=>{

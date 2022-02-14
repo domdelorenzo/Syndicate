@@ -11,14 +11,11 @@ export default function FolderList(props) {
   const getFolders = async () => {
       const response = await GetFolderByUser(user.id);
       setFolderlist(response.data)
-      console.log(response.data)
   }
 const checkUserData = async () => {
   const res = await GetUserData()
-  console.log('check user triggered')
-  console.log(res)
 }
- 
+
   useEffect(()=>{
     getFolders()
     checkUserData()
@@ -37,7 +34,6 @@ const checkUserData = async () => {
           :
           <div>No folders</div>
       }
-     
     </div>
   )
   

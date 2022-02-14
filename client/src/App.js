@@ -22,14 +22,12 @@ function App() {
   const checkToken = async () => {
     const user = await CheckSession();
     setUser(user);
-    console.log(user);
     setAuth(true);
   };
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       checkToken();
-      console.log('token check triggered');
     }
   }, []);
   return (

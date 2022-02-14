@@ -31,7 +31,7 @@ export default function ReadingPane(props) {
     
     }
     fetchArticles()
-    
+    console.log(articles)
     
 
     
@@ -46,16 +46,12 @@ export default function ReadingPane(props) {
             <Article 
 
               title={article.title}
-              // fullcontent={article['content:encoded']}
-              fullcontent={article['content']}
-              // snippet={article.content}
+              fullcontent={article['content:encoded']}
+              // fullcontent={article['content']}
               snippet={article.contentSnippet}
+              // snippet={article.contentSnippet}
               date={article.pubDate}
             />
-            {/* <h3>{article.title}</h3> */}
-            {/* <span>{article['content:encoded']}</span> */}
-            {/* <div dangerouslySetInnerHTML={{__html: `${article['content:encoded']}`}} ></div> */}
-            {/* <h6>{article.pubDate}</h6> */}
           </div>
         ))}
  
