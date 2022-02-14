@@ -1,4 +1,3 @@
-import e from 'cors';
 import React, { useState, useEffect,useContext } from 'react';
 import { CreateFeed, CreateFolder, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
 import { UserContext } from '../App';
@@ -53,9 +52,12 @@ export default function AddFeed(props) {
       userId: user.id,
       [e.target.name]: e.target.value
     })
+    console.log(user)
+    console.log(newFolder)
   }
-  const postNewFolder = async () => {
+  const postNewFolder = async (e) => {
     e.preventDefault()
+    console.log(newFolder)
     const res = await CreateFolder(newFolder)
     setFolderInput(false)
     return res
@@ -93,7 +95,10 @@ export default function AddFeed(props) {
           onChange={handleChange}/>
         
 
-        <div className='folder-dropdown-container'>
+       
+        <button type="submit">Add feed</button>
+      </form>
+      <div className='folder-dropdown-container'>
           <div
             className='select-folder-bttn'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
@@ -116,7 +121,7 @@ export default function AddFeed(props) {
                 className='folder-dropdown-element'
                 id='newFolder'
                 onClick={folderDropdownHandler}>
-                New tag
+                New Folder
               </div>
             )}
             {folderInput && (
@@ -126,13 +131,12 @@ export default function AddFeed(props) {
                   name='folder_name'
                   onChange={folderInputChange}
                   placeholder='Enter Folder name...'></input>
+                  <button type="submit">+</button>
               </form>
             )}
 
           </div>
         </div>
-        <button type="submit">Add feed</button>
-      </form>
     </div>
 
   )

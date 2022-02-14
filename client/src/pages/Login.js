@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LogInUser } from '../Services/endpoints';
+import { UserContext } from '../App';
 
 export default function Login(props) {
   const [logIn, setLogIn] = useState({ username: '', password: '' });
-
+  const { setUser, setAuth } = useContext(UserContext);
   const handleChange = (e) => {
     setLogIn({ ...logIn, [e.target.name]: e.target.value });
   };
@@ -12,11 +13,12 @@ export default function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await LogInUser(logIn);
-    props.setUser(res);
+    setUser(res);
+    console.log(res);
     setLogIn({});
-    props.setAuth(true);
+    setAuth(true);
   };
-
+  console.log(props);
   return (
     <div className="SignIn">
       <div className="signin-left-side"></div>

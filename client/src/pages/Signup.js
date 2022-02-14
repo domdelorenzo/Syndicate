@@ -13,9 +13,9 @@ export default function Signup(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await RegisterUser(values);
-    return data;
     setValues({});
     navigate('/');
+    return data;
   };
   return (
     <div className="SignUp">

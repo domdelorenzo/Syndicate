@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+import Navbar from './components/Navbar';
 import { CheckSession } from './Services/endpoints';
 export const UserContext = createContext();
 
@@ -13,23 +14,29 @@ function App() {
 
   const checkToken = async () => {
     const res = await CheckSession();
-    setUser(user);
+    setUser(res);
+    console.log(res);
     setAuth(true);
-    return res;
   };
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       checkToken();
     }
-  }, []);
+  }, [user]);
   return (
     <UserContext.Provider value={{ user, setUser, auth, setAuth }}>
       <div className="App">
         {auth ? (
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
+          <div>
+            <Navbar />
+            <Routes>
+              <Route
+                path="/"
+                element={<Home setUser={setUser} setAuth={setAuth} />}
+              />
+            </Routes>
+          </div>
         ) : (
           <Routes>
             <Route
