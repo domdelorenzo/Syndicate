@@ -5,7 +5,7 @@ require('dotenv').config();
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS);
 const APP_SECRET = process.env.APP_SECRET;
 
-// functions to be used in login/signup controllers for authentication
+// login/signup controllers for authentication
 const hashPassword = async (password) => {
   let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
   return hashedPassword;
@@ -21,7 +21,8 @@ const createToken = (payload) => {
   return token;
 };
 
-// functions to be used in routes for authorization
+// routes for authorization
+
 const verifyToken = (req, res, next) => {
   const token = res.locals.token;
   try {
@@ -44,7 +45,7 @@ const stripToken = (req, res, next) => {
       return next();
     }
   } catch (error) {
-    res.status(401).send({ status: 'Error', message: 'Unauthorized' });
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' });
   }
 };
 

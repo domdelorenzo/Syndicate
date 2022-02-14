@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { CreateFeed, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import React, { useState, useEffect,useContext } from 'react';
+import { CreateFeed, CreateFolder, GetFolderDetail, GetFolderByUser } from '../Services/endpoints'
+import { UserContext } from '../App';
 
 export default function AddFeed(props) {
+  const {user} = useContext(UserContext)
   const [openDrop, setOpenDrop] = useState(true);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])
+  const [newFolder, setNewFolder] =useState({})
   const [newFeed, setNewFeed] = useState({
-    "userId": 1,
+    "userId": "",
     "folderId": "",
     "feed_name": "",
     "url": "",
@@ -29,7 +32,7 @@ export default function AddFeed(props) {
     setSelectedFolder(res.data)
   }
   const handleChange = (e) => {
-    setNewFeed({...newFeed, [e.target.name]: e.target.value });
+    setNewFeed({...newFeed, userId: user.id, [e.target.name]: e.target.value });
     console.log({...newFeed, [e.target.name]: e.target.value });
   }
   const folderDropdownHandler = (e) => {
@@ -44,16 +47,32 @@ export default function AddFeed(props) {
 			});
 		}
 	};
+  const folderInputChange = (e) => {
+    setNewFolder({
+      userId: user.id,
+      [e.target.name]: e.target.value
+    })
+    console.log(user)
+    console.log(newFolder)
+  }
+  const postNewFolder = async (e) => {
+    e.preventDefault()
+    console.log(newFolder)
+    const res = await CreateFolder(newFolder)
+    setFolderInput(false)
+    return res
+  }
+
+
 
   const addFeed = async (e)=>{
     e.preventDefault()
-    // console.log('add!')
     await CreateFeed(newFeed)
     console.log(newFeed)
   }
   const getFolders = async () => {
-    const response = await GetAllFolders();
-    setFolderlist(response)
+    const response = await GetFolderByUser(user.id);
+    setFolderlist(response.data)
     console.log(response)
     return;
   }
@@ -76,7 +95,10 @@ export default function AddFeed(props) {
           onChange={handleChange}/>
         
 
-        <div className='folder-dropdown-container'>
+       
+        <button type="submit">Add feed</button>
+      </form>
+      <div className='folder-dropdown-container'>
           <div
             className='select-folder-bttn'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
@@ -94,28 +116,27 @@ export default function AddFeed(props) {
                   {e.folder_name}
                 </div>
               ))}
-            {/* {openDrop && (
+            {openDrop && (
               <div
                 className='folder-dropdown-element'
                 id='newFolder'
                 onClick={folderDropdownHandler}>
-                New tag
+                New Folder
               </div>
-            )} */}
-            {/* {folderInput && (
+            )}
+            {folderInput && (
               <form onSubmit={postNewFolder}>
                 <input
                   className='folder-input-form'
-                  name='folder'
+                  name='folder_name'
                   onChange={folderInputChange}
                   placeholder='Enter Folder name...'></input>
+                  <button type="submit">+</button>
               </form>
-            )} */}
+            )}
 
           </div>
         </div>
-        <button type="submit">Add feed</button>
-      </form>
     </div>
 
   )

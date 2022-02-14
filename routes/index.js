@@ -10,6 +10,6 @@ Router.get('/', (req, res) => {
 Router.use('/user', UserRouter);
 Router.use('/folder', FolderRouter);
 Router.use('/feed', FeedRouter);
-// Router.use('/auth', AuthRouter);
+Router.use('/auth', AuthRouter);
 
 module.exports = Router;
