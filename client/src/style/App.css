@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
 
 .home-container {
   display: flex;
@@ -81,4 +82,74 @@
 	background-color: rgb(238, 238, 238);
 	transition: 0.5s;
 	cursor: pointer;
+}
+
+.article-card {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  overflow: hidden;
+	height: 25vmin;
+	width: 75vmin;
+}
+.summary {
+	overflow: ellipsis;
+	white-space: pre;
+  overflow: hidden;
+	height: 25vmin;
+	width: 75vmin;
+}
+
+/* sign-in page */
+.sign-in, .sign-up {
+	display:flex;
+	flex-direction: row;
+	border-radius: 3px;
+	margin: auto;
+	width: 100vw;
+	padding-top: 10vmin;
+	text-align: center;
+  justify-content: center;
+}
+.signin-right-side {
+	margin: 50px;
+}
+.signin-right-side, .signup-form-container-div {
+	display:flex;
+	flex-direction: column;
+	border-radius: 3px;
+	border: 2px solid;
+	text-align: center;
+  justify-content: flex-end;
+	margin: 50px;
+	max-width: 25rem;
+
+	
+}
+
+.signin-form-buttons-div{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: auto 50px 20px 50px;
+}
+
+.welcome-text, .sign-up-text {
+	inline-size: 20rem;
+	overflow-wrap: break-word;
+  hyphens: manual;
+	text-align: left;
+	align-self:flex-start;
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 50px 50px 50px 50px;
+
+}
+
+.welcome-sub-text{
+	margin: auto 50px 20px 50px;
+}
+
+.signup-form-container-div {
+	align-self: center;
+	align-self: baseline;
 }

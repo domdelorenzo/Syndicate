@@ -10,8 +10,8 @@ export default function Navbar(props) {
 	};
   return(
     <div>
-      <button className='logout-btn' onClick={logout}>
-      LOGOUT
+      <button primary className='logout-btn' onClick={logout}>
+      Logout
       </button>
     </div>
     

@@ -93,14 +93,11 @@ export default function AddFeed(props) {
           placeholder="Feed name"
           name="feed_name"
           onChange={handleChange}/>
-        
-
-       
         <button type="submit">Add feed</button>
       </form>
       <div className='folder-dropdown-container'>
           <div
-            className='select-folder-bttn'
+            className='normal-btn'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
             {buttonDisplay}
           </div>

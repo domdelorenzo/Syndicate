@@ -14,7 +14,9 @@ export default function Home(props) {
           <div className="sidebar">
             <Sidebar />
           </div>
-          <div className="readingPane">{/* <ReadingPane /> */}</div>
+          <div className="readingPane">
+            <ReadingPane />
+          </div>
         </div>
       </div>
     </FeedContext.Provider>

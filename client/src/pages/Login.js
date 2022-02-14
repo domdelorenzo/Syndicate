@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LogInUser } from '../Services/endpoints';
 import { UserContext } from '../App';
+import logo512 from '../assets/logo512.png';
 
 export default function Login(props) {
   const [logIn, setLogIn] = useState({ username: '', password: '' });
@@ -19,10 +20,18 @@ export default function Login(props) {
   };
 
   return (
-    <div className="SignIn">
-      <div className="signin-left-side"></div>
+    <div className="sign-in">
+      <div className="signin-left-side">
+        <img src={logo512}></img>
+      </div>
 
       <div className="signin-right-side">
+        <div className="welcome-text">
+          Organize all your favorite news and blogs in one place
+        </div>
+        <div className="welcome-sub-text">
+          Sign in to your account or click Get Started to sign up
+        </div>
         <div className="signin-form-container-div">
           <form onSubmit={handleSubmit}>
             <div className="signin-form-div">
@@ -49,13 +58,19 @@ export default function Login(props) {
             </div>
 
             <div className="signin-form-buttons-div">
-              <button onClick={props.authClick} className="signin-form-button">
+              <button
+                className="normal-btn"
+                onClick={props.authClick}
+                className="signin-form-button"
+              >
                 Log In
               </button>
               <br />
-              <span className="signin-text">
-                Don't have an account? Register <Link to="/signup">here!</Link>
-              </span>
+              <Link to="/signup">
+                <button className="signin-text highlight-btn">
+                  Get started
+                </button>
+              </Link>
             </div>
           </form>
         </div>

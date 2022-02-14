@@ -21,11 +21,8 @@ export default function ReadingPane(props) {
   //   }
   // }
   useEffect(()=>{
-    // const url = 'https://cors-anywhere.herokuapp.com/https://goingmedievalblog.wordpress.com/feed/'
-    // const url = 'https://goingmedievalblog.wordpress.com/feed/'
-    // const url = 'https://cors-anywhere.herokuapp.com/https://cdn.hackernoon.com/feed'
-    // const url = 'https://cors-anywhere.herokuapp.com/https://news.google.com/rss/search?q=ketogenic+diet&hl=en-US&gl=US&ceid=US:en'
-    const url = 'https://www.wired.com/feed'
+    // const url = 'https://www.wired.com/feed'
+    const url = 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml'
     // getFeedData(url)
     // const parser = new Parser()
     // const baseurl = 'https://cors-anywhere.herokuapp.com'
