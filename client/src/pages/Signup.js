@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RegisterUser } from '../Services/endpoints';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import logo512 from '../assets/logo512.png';
 
 export default function Signup(props) {
   const [values, setValues] = useState({});
@@ -22,6 +23,7 @@ export default function Signup(props) {
     <div className="sign-up">
       <div className="signup-form-container-div">
         <div className="sign-up-text">Create an account below</div>
+        <img className="medium-logo" src={logo512}></img>
         <form onSubmit={handleSubmit}>
           <div className="signup-form-div">
             <input

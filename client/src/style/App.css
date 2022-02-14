@@ -106,12 +106,16 @@
 	border-radius: 3px;
 	margin: auto;
 	width: 100vw;
+	height:100vmax;
 	padding-top: 10vmin;
 	text-align: center;
   justify-content: center;
+	
 }
 .signin-right-side {
 	margin: 50px;
+	/* min-height: 60vh;
+	max-height: 80vh; */
 }
 .signin-right-side, .signup-form-container-div {
 	display:flex;
@@ -120,8 +124,12 @@
 	border: 2px solid;
 	text-align: center;
   justify-content: flex-end;
+	align-content: center;
 	margin: 50px;
 	max-width: 25rem;
+	/* min-height: 60vh;*/
+	max-height: 600px;
+	background: rgba(255, 255, 255, 0.116);
 
 	
 }
@@ -153,3 +161,11 @@
 	align-self: center;
 	align-self: baseline;
 }
+
+.medium-logo {
+	max-height: 30%;
+	max-width: 30%;
+	align-self: center;
+}
+
+
