@@ -9,7 +9,6 @@ export default function Home(props) {
   return (
     <FeedContext.Provider value={{ feedurl, setFeedurl, feedid, setFeedid }}>
       <div>
-        <header>Welcome Home</header>
         <div className="home-container">
           <div className="sidebar">
             <Sidebar />

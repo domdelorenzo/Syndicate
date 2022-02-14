@@ -5,7 +5,7 @@ import { EditFeed, GetFeedDetail, GetAllFolders, GetFolderDetail } from '../Serv
 export default function EditFeedForm(props) {
   const {feedid} = useContext(FeedContext)
 
-  const [openDrop, setOpenDrop] = useState(true);
+  const [openDrop, setOpenDrop] = useState(false);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])

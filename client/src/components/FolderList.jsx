@@ -26,7 +26,6 @@ const checkUserData = async () => {
   },[])
   return (
     <div>
-      <div> Folders </div>
       { (folderlist.length>0) ?
           <section className='folderlist'>
           {folderlist.map((folder)=>(

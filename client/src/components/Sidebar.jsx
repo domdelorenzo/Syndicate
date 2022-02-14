@@ -6,7 +6,7 @@ import { UserContext } from '../App';
 export default function Sidebar(props) {
   
   return (
-    <div> Sidebar 
+    <div>
       <FolderList/>
       <AddFeed/>
     </div>

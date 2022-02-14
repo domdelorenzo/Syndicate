@@ -3,7 +3,7 @@
 .home-container {
   display: flex;
   flex-direction: row;
-  height: 90vmin;
+  height: 100vmax;
 }
 
 .sidebar {
@@ -14,7 +14,7 @@
 }
 
 .readingPane {
-  max-width: 75vw;
+  /* max-width: 75vw; */
 }
 
 .title {
@@ -85,11 +85,11 @@
 }
 
 .article-card {
-	text-overflow: ellipsis;
+	/* text-overflow: ellipsis;
 	white-space: nowrap;
-  overflow: hidden;
-	height: 25vmin;
-	width: 75vmin;
+  overflow: hidden; */
+	max-height: 25vw;
+	width: 75vw;
 }
 .summary {
 	overflow: ellipsis;
@@ -174,7 +174,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	width: 100hw;
+	width: 100vw;
 }
 .small-logo{
 	max-height: 10%;

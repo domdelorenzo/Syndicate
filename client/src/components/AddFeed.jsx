@@ -4,7 +4,7 @@ import { UserContext } from '../App';
 
 export default function AddFeed(props) {
   const {user} = useContext(UserContext)
-  const [openDrop, setOpenDrop] = useState(true);
+  const [openDrop, setOpenDrop] = useState(false);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])
@@ -83,6 +83,7 @@ export default function AddFeed(props) {
   return (
     <div className='add-feed-form'>
       <form onSubmit={addFeed}>
+      <button type="submit">Add feed</button>
         <input 
           type="text"
           placeholder="Paste a RSS URL"
@@ -93,7 +94,7 @@ export default function AddFeed(props) {
           placeholder="Feed name"
           name="feed_name"
           onChange={handleChange}/>
-        <button type="submit">Add feed</button>
+        
       </form>
       <div className='folder-dropdown-container'>
           <div
