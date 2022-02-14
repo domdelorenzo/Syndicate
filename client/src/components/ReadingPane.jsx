@@ -10,28 +10,13 @@ export default function ReadingPane(props) {
   const [articles, setArticles] = useState([])
   const {feedurl}= useContext(FeedContext)
 
-  // const getFeedData = async (url) => {
-  //   try {
-  //     console.log(`Get feed data from ${url}`)
-  //     const data = await read(url)
-  //     console.log(data)
-  //     return data
-  //   } catch (err) {
-  //     console.trace(err)
-  //   }
-  // }
+
   useEffect(()=>{
-    // const url = 'https://www.wired.com/feed'
     const url = 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml'
-    // getFeedData(url)
-    // const parser = new Parser()
-    // const baseurl = 'https://cors-anywhere.herokuapp.com'
-    // const filterPosts = (items, limit)=>{
-    // }
     const fetchArticles = async ()=> {
     if (feedurl){
-      // const feed = await axios.get(feedurl)
-      const feed = await axios.get(url)
+      const feed = await axios.get(feedurl)
+      // const feed = await axios.get(url)
       .then((res) => {
         let parser = new Parser();
         parser.parseString(res.data, (err, feed)=> {
@@ -41,21 +26,19 @@ export default function ReadingPane(props) {
       .catch((err) => {
         console.log(err);
       })
-      // console.log(feed)
+
     }
     
     }
     fetchArticles()
     
     
-    // console.log(feedurl)
+
     
   },[feedurl])
-  // console.log(feedurl)
-  // console.log(articles)
+
   return (
     <div>
-      <header>Hello {feedurl}!</header>
       <FeedSettingsPanel/>
       <section className='articlelist'>
       {articles.map((article)=>(

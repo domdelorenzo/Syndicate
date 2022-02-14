@@ -7,7 +7,7 @@ import { UserContext } from '../App';
 export default function FolderList(props) {
   const { user }= useContext(UserContext)
   const [folderlist, setFolderlist] = useState([])
-  // console.log(user)
+
   const getFolders = async () => {
       const response = await GetFolderByUser(user.id);
       setFolderlist(response.data)
@@ -18,8 +18,7 @@ const checkUserData = async () => {
   console.log('check user triggered')
   console.log(res)
 }
-  // console.log(folderlist)
-  // console.log(user)
+ 
   useEffect(()=>{
     getFolders()
     checkUserData()

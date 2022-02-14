@@ -53,4 +53,8 @@ input {
   border-radius: 3px;g
 }
 
+.menu {
+	margin-bottom: 0;
+}
+
 `;

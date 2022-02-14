@@ -14,7 +14,7 @@
 }
 
 .readingPane {
-  /* max-width: 75vw; */
+  max-width: 90vw;
 }
 
 .title {
@@ -52,12 +52,6 @@
 	transition: 0.5s;
 }
 
-/* .select-folder-bttn:hover {
-	background-color: var(--hover-color1);
-	width: 200px;
-	transition: 0.5s;
-	cursor: pointer;
-} */
 
 .folder-dropdown-option-list {
 	display: flex;
@@ -177,8 +171,8 @@
 	width: 100vw;
 }
 .small-logo{
-	max-height: 10%;
-	max-width: 10%;
+	max-height: 4rem;
+	max-width: 4rem;
 }
 
 .brand {
@@ -189,3 +183,8 @@
 .logout-btn {
 	align-self: stretch;
 }
+
+.menu {
+	margin-bottom: -1em;
+}
+

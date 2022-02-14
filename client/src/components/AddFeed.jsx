@@ -98,7 +98,7 @@ export default function AddFeed(props) {
       </form>
       <div className='folder-dropdown-container'>
           <div
-            className='normal-btn'
+            className='normal-btn menu'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
             {buttonDisplay}
           </div>

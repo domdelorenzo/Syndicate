@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FeedContext } from '../pages/Home';
-import { EditFeed, GetFeedDetail, GetAllFolders, GetFolderDetail } from '../Services/endpoints'
+import {UserContext} from '../App'
+import { EditFeed, GetFeedDetail, GetAllFolders,GetFolderByUser, GetFolderDetail, CreateFolder } from '../Services/endpoints'
 
 export default function EditFeedForm(props) {
   const {feedid} = useContext(FeedContext)
-
+  const {user} = useContext(UserContext)
   const [openDrop, setOpenDrop] = useState(false);
   const [folderInput, setFolderInput] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState('')
   const [folderlist, setFolderlist] = useState([])
+  const [newFolder, setNewFolder] =useState({})
   const [feedslug, setFeedslug] = useState({
     "feed_name": "",
     "url": "",
@@ -47,10 +49,17 @@ export default function EditFeedForm(props) {
 		}
 	};
 
- 
+  const postNewFolder = async (e) => {
+    e.preventDefault()
+    console.log(newFolder)
+    const res = await CreateFolder(newFolder)
+    setFolderInput(false)
+    return res
+  }
+
   const getFolders = async () => {
-    const response = await GetAllFolders();
-    setFolderlist(response)
+    const response = await GetFolderByUser(user.id);
+    setFolderlist(response.data)
     return;
   }
   const getCurrentFeed = async (id) => {
@@ -71,6 +80,14 @@ export default function EditFeedForm(props) {
     }
   }
 
+  const folderInputChange = (e) => {
+    setNewFolder({
+      userId: user.id,
+      [e.target.name]: e.target.value
+    })
+    console.log(user)
+    console.log(newFolder)
+  }
   const updateFeed = async (e)=>{
     e.preventDefault()
     await EditFeed(feedid,feedslug)
@@ -99,7 +116,7 @@ export default function EditFeedForm(props) {
 
         <div className='folder-dropdown-container'>
           <div
-            className='normal-btn'
+            className='normal-btn menu'
             onClick={() => setOpenDrop((openDrop) => !openDrop)}>
             {buttonDisplay}
           </div>
@@ -115,23 +132,24 @@ export default function EditFeedForm(props) {
                   {e.folder_name}
                 </div>
               ))}
-            {/* {openDrop && (
+            {openDrop && (
               <div
                 className='folder-dropdown-element'
                 id='newFolder'
                 onClick={folderDropdownHandler}>
-                New tag
+                New Folder
               </div>
-            )} */}
-            {/* {folderInput && (
+            )}
+            {folderInput && (
               <form onSubmit={postNewFolder}>
                 <input
                   className='folder-input-form'
-                  name='folder'
+                  name='folder_name'
                   onChange={folderInputChange}
                   placeholder='Enter Folder name...'></input>
+                  <button type="submit">+</button>
               </form>
-            )} */}
+            )}
 
           </div>
         </div>
