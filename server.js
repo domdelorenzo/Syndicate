@@ -4,7 +4,11 @@ const logger = require('morgan');
 const routes = require('./routes/');
 const app = express();
 const path = require('path');
-
+const { auth } = require('express-oauth2-jwt-bearer');
+const checkJwt = auth({
+  audience: 'https://syndicate-rss.herokuapp.com/api',
+  issuerBaseURL: `https://dev-b1qfk9fs.us.auth0.com/`
+});
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
