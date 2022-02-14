@@ -117,3 +117,12 @@ export const CheckSession = async () => {
     throw error;
   }
 };
+
+export const GetUserData = async () => {
+  try {
+    const res = await Client.get('/auth/getUsername');
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

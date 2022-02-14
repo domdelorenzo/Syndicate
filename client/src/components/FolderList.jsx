@@ -1,23 +1,28 @@
 import React, { useEffect, useState, useContext } from 'react';
 import FeedList from './FeedList';
-import { GetAllFolders, GetFolderByUser } from '../Services/endpoints';
+import { GetUserData, GetFolderByUser } from '../Services/endpoints';
 import { UserContext } from '../App';
 
 
 export default function FolderList(props) {
   const { user }= useContext(UserContext)
   const [folderlist, setFolderlist] = useState([])
-  console.log(user)
+  // console.log(user)
   const getFolders = async () => {
       const response = await GetFolderByUser(user.id);
       setFolderlist(response.data)
-      console.log(response)
-
+      console.log(response.data)
   }
-  console.log(folderlist)
-  console.log(user)
+const checkUserData = async () => {
+  const res = await GetUserData()
+  console.log('check user triggered')
+  console.log(res)
+}
+  // console.log(folderlist)
+  // console.log(user)
   useEffect(()=>{
     getFolders()
+    checkUserData()
   },[])
   return (
     <div>
@@ -29,7 +34,8 @@ export default function FolderList(props) {
               <FeedList 
               name={folder.folder_name} id={folder.id} />
             </div>
-          ))}  
+          ))}
+          <button onClick={checkUserData}>checkuser</button>  
           </section>
           :
           <div>No folders</div>

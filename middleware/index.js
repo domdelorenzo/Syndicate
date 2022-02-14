@@ -40,6 +40,7 @@ const verifyToken = (req, res, next) => {
 const stripToken = (req, res, next) => {
   try {
     const token = req.headers['authorization'].split(' ')[1];
+    // const token = req.headers['x-access-token']?.split(' ')[1];
     if (token) {
       res.locals.token = token;
       return next();
@@ -49,10 +50,35 @@ const stripToken = (req, res, next) => {
   }
 };
 
+const verifyJWT = (req, res, next) => {
+  const token = req.headers['authorization']?.split(' ')[1];
+  // const token = req.headers['x-access-token']?.split(' ')[1];
+  if (token) {
+    jwt.verify(token, APP_SECRET, (err, decoded) => {
+      if (err)
+        return res.json({
+          isLoggedIn: false,
+          message: 'failed to authenticate'
+        });
+      req.user = {};
+      req.user.id = decoded.id;
+      requ.user.username = decoded.username;
+      next();
+    });
+  } else {
+    res.json({
+      isLoggedIn: false,
+      message: 'incorrect token',
+      headers: req.headers
+    });
+  }
+};
+
 module.exports = {
   hashPassword,
   comparePassword,
   createToken,
   verifyToken,
-  stripToken
+  stripToken,
+  verifyJWT
 };
